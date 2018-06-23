@@ -20,7 +20,7 @@ connection.on('error', (err) => {
 //     })
 
 
-var indexRouter = require('./routes/index');
+// var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -28,9 +28,15 @@ var app = express();
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use(express.static(__dirname + '/client/build/'))
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/client/build/index.html')
+})
+
 app.use('/users', usersRouter);
 
 module.exports = app;
