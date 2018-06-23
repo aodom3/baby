@@ -15,6 +15,10 @@ connection.on('connected', () => {
 connection.on('error', (err) => {
   console.log('Mongoose default connection error: ' + err);
 });
+// db.on('open', () => {
+//     console.log('Connected to MongoDB')
+//     })
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
