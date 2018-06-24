@@ -2,7 +2,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI)
 
-
+const {UserModel, MangaModel} = require('./schema')
 const db = mongoose.connection;
 db.on('error', function (err) {
     console.log(err);

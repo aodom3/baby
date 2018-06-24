@@ -17,10 +17,12 @@ const UserSchema = new Schema({
     mangas: [MangaSchema]
 });
 
-const MangaModel = mongoose.model('Manga', MangaSchema)
 const UserModel = mongoose.model('User', UserSchema)
+const MangaModel = mongoose.model('Manga', MangaSchema)
+
 
 module.exports = {
-    MangaModel: MangaModel,
     UserModel: UserModel
+    MangaModel: MangaModel,
+    
 }
