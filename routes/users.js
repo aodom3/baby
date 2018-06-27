@@ -16,9 +16,23 @@ router.post('/', (req, res) => {
     res.json(user)
   }).catch(console.log)
 })
+/*UPDATE users listing */
 
-// DELETE users listing */
+router.put('/:id', function (req, res, next){
+  User.findByIdAndUpdate (req.params.id, req.body, function (err, post){
+      if (err) return next (err);
+      res.json(post)
+  })
+})
 
+/* DELETE users listing */
+
+router.delete('/:id', function (req, res, next){
+  User.findByIdAndRemove(req.params.id, req.body, function (err, post){
+      if (err) return next (err);
+      res.json(post)
+  })
+})
 
 
 module.exports = router
