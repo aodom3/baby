@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import HomePage from './components/HomePage'
 import LogInPage from './components/LogInPage'
-import MangaPage from './components/MangaPage'
+import PicPage from './components/PicPage'
+
 
 
 class App extends Component {
@@ -12,12 +13,11 @@ class App extends Component {
       <Router>
         <div>
           <div>
-            <Link to='/login'>Login Now</Link>
+            <Link to='/login'>Login</Link>
           </div>
           <Switch>
             <Route exact path="/" component={HomePage}/>
             <Route path="/login" component={LogInPage}/>
-            <Route path="/user/:userId" component={MangaPage}/>
           </Switch>
         </div>
       </Router>

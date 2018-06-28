@@ -16,10 +16,6 @@ connection.on('connected', () => {
 connection.on('error', (err) => {
   console.log('Mongoose default connection error: ' + err)
 });
-// db.on('open', () => {
-//     console.log('Connected to MongoDB')
-//     })
-
 
 // var indexRouter = require('./routes/index');
 var usersRouter = require('./Controller/users')
@@ -34,7 +30,14 @@ app.use(express.static(__dirname + '/client/build/'))
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/client/build/index.html')
 })
+const UsersController = require('./Controller/users')
+app.use('/api/users', UsersController)
 
-app.use('/users', usersRouter)
+const PicsController = require('./Controller/pic')
+app.use('api/users/:userID/pics', PicsController)
 
+const PORT = process.env.PORT || 3001
+app.listen(PORT, () =>{
+  console.log('App Runnin Ayyye!')
+})
 module.exports = app
