@@ -1,5 +1,5 @@
 const express = require('express')
-const {User, Pic} = require('../db/schema')
+const {User} = require('../db/schema')
 const router = express.Router()
 
 /* GET users listing. */
