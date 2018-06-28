@@ -22,7 +22,7 @@ connection.on('error', (err) => {
 
 
 // var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users')
+var usersRouter = require('./Controller/users')
 var app = express()
 
 app.use(logger('dev'));

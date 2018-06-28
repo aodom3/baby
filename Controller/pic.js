@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express')
 const router = express.Router({mergeParams: true})
 // const mongoose = require('mongoose')
 const Manga = require('../db/schema')
@@ -7,7 +7,7 @@ const Manga = require('../db/schema')
 router.get('/', function (req, res,next){
     Manga.find(function(err, products) {
         if (err) return next (err)
-        res.json(produts)
+        res.json(products)
     })
 })
 
@@ -43,4 +43,4 @@ router.delete('/:id', function (req, res, next){
     })
 })
 
-module.exports = router;
+module.exports = router

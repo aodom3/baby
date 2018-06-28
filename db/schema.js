@@ -2,27 +2,40 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
 
-const MangaSchema = new Schema({
-    title: String,
-    // cover: String,
-    author: String,
-    category: String,
-    chapter: String
+const PicSchema = new Schema({
+    title: {
+        type: String,
+        required:true,
+    },
+    description:{
+        type: String,
+        required:true,
+    },
+})
+const MonthSchema = new Schema({
+    Month: {
+        type: Number,
+        required: true,
+    }
+})
+const UserSchema = new Schema({
+    userName: {
+        type: String,
+        required: true,
+    },
+    password: {
+        type: String,
+        required:true
+    },
+    
+    pics: [PicSchema]
 })
 
-const UserSchema = new Schema({
-    avatar: String,
-    username: String,
-    password: String,
-    mangas: [MangaSchema]
-});
-
-const UserModel = mongoose.model('User', UserSchema)
-const MangaModel = mongoose.model('Manga', MangaSchema)
-
+const User = mongoose.model('User', UserSchema)
+const Pic = mongoose.model('Pic', PicSchema)
+const Month = mongoose.model('Month', MonthSchema)
 
 module.exports = {
-    UserModel: UserModel
-    MangaModel: MangaModel,
+   User, Pic, Month
     
 }

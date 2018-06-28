@@ -4,7 +4,7 @@ class LogInPage extends Component {
   render () {
     return (
       <div>
-        <h1>Hello From LogInPage</h1>
+        <h1>See your baby Grow!</h1>
       </div>
     )
   }

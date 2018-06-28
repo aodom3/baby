@@ -4,7 +4,7 @@ class HomePage extends Component {
   render () {
     return (
       <div>
-        <h1>Hello From HomePage</h1>
+        <h1>Baby App</h1>
       </div>
     )
   }
