@@ -3,8 +3,6 @@ const mongoose = require('mongoose')
 mongoose.connect(process.env.MONGODB_URI)
 // mongoose.Promise = global.promise
 
-
-
 const {User, Pic} = require('./schema')
 
 const Month1 = new Pic({

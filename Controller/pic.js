@@ -3,7 +3,7 @@ const router = express.Router({mergeParams: true})
 // const mongoose = require('mongoose')
 const Manga = require('../db/schema')
  
-/*GET ALL THE MANGAS*/
+/*GET ALL THE PICS*/
 router.get('/', function (req, res,next){
     Manga.find(function(err, products) {
         if (err) return next (err)
@@ -11,7 +11,7 @@ router.get('/', function (req, res,next){
     })
 })
 
-/*GET SINGLE MANGA*/
+/*GET SINGLE PIC*/
 router.get('/:id', function (req, res,next){
     Manga.findById (req.params.id, function(err, post) {
         if (err) return next (err)
@@ -19,7 +19,7 @@ router.get('/:id', function (req, res,next){
     })
 })
  
-/*SAVE MANGA*/
+/*SAVE PIC*/
 router.post('/', function (req, res,next){
     Manga.create(req.body, function(err, products) {
         if (err) return next (err)
@@ -27,7 +27,7 @@ router.post('/', function (req, res,next){
     })
 })
  
-/*UPDATE MANGA*/
+/*UPDATE PIC*/
 router.put('/:id', function (req, res, next){
     Manga.findByIdAndUpdate (req.params.id, req.body, function (err, post){
         if (err) return next (err);
@@ -35,7 +35,7 @@ router.put('/:id', function (req, res, next){
     })
 })
 
- /*DELETE MANGA*/
+ /*DELETE PIC*/
 router.delete('/:id', function (req, res, next){
     Manga.findByIdAndRemove(req.params.id, req.body, function (err, post){
         if (err) return next (err);
