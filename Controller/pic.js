@@ -1,46 +1,69 @@
 const express = require('express')
+const {User, Pic} = require('../db/schema')
 const router = express.Router({mergeParams: true})
 // const mongoose = require('mongoose')
-const Manga = require('../db/schema')
- 
-/*GET ALL THE PICS*/
-router.get('/', function (req, res,next){
-    Manga.find(function(err, products) {
-        if (err) return next (err)
-        res.json(products)
-    })
-})
 
-/*GET SINGLE PIC*/
-router.get('/:id', function (req, res,next){
-    Manga.findById (req.params.id, function(err, post) {
-        if (err) return next (err)
-        res.json(post)
-    })
-})
+router.get('/', (req, res) => {
+    Users.find()
+      .then(users => {
+        res.json(users)
+        console.log(users)
+      })
+      .catch((err) => console.log(err))
+  })
+
+  router.post('/', (req, res) => {
+    User.findById(req.params.userId)
+      .then((user) => {
+          user.pics.push(new Pic())
+          user.save()
+          .then((data) => {
+            res.json(data)
+          })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  })
  
-/*SAVE PIC*/
-router.post('/', function (req, res,next){
-    Manga.create(req.body, function(err, products) {
-        if (err) return next (err)
-        res.json(post)
+  router.delete('/', (req, res) => {
+    User.findById(req.params.userId)
+    .then((user) => {
+        user.update({
+            $pull:
+            {pics: {_id: req.params.id} }
+        })
+        .then((data) => {
+            res.sendStatus(200)
+        })
+        .catch(console.error)
     })
-})
+    .catch(console.error)
+});
+
+
  
 /*UPDATE PIC*/
-router.put('/:id', function (req, res, next){
-    Manga.findByIdAndUpdate (req.params.id, req.body, function (err, post){
-        if (err) return next (err);
-        res.json(post)
+router.put('/:id', function (req, res){
+    User.findById(req.params.userId).then((user) => {
+        const update = req.body.pic
+        const pic = user.pic.id(req.params.id)
+        if (update.title) {
+            pic.title = update.title
+        }
+        if (update.description) {
+            pic.description = update.description
+        }
+        user.save().then((user) => {
+            user.pics = user.pics.reverse()
+            res.json(user)
+        })
+      })
     })
-})
 
- /*DELETE PIC*/
-router.delete('/:id', function (req, res, next){
-    Manga.findByIdAndRemove(req.params.id, req.body, function (err, post){
-        if (err) return next (err);
-        res.json(post)
-    })
-})
+
+
+ 
+
 
 module.exports = router

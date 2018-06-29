@@ -7,7 +7,7 @@ class HomePage extends Component {
       <div>
         <h1>Baby App</h1>
         <p> Check the progression of your baby over his or her first year</p>
-        <button>Log in</button>
+      
       </div>
     )
   }
