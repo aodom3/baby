@@ -7,17 +7,16 @@ const PicSchema = new Schema({
         type: String,
         required:true,
     },
+    month: {
+        type: String,
+        required: true,
+    },
     description:{
         type: String,
         required:true,
     },
 })
-const MonthSchema = new Schema({
-    Month: {
-        type: Number,
-        required: true,
-    }
-})
+
 const UserSchema = new Schema({
     userName: {
         type: String,
@@ -33,9 +32,6 @@ const UserSchema = new Schema({
 
 const User = mongoose.model('User', UserSchema)
 const Pic = mongoose.model('Pic', PicSchema)
-const Month = mongoose.model('Month', MonthSchema)
 
-module.exports = {
-   User, Pic, Month
-    
-}
+
+module.exports = {User, Pic,}
