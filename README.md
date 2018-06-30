@@ -19,6 +19,7 @@ MongoDB
 React
 Express
 Node.js
+Bootstrap/Reactstrap
 Trello
 Heroku
 Luicidchart
