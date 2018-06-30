@@ -1,9 +1,13 @@
 const express = require('express')
-const {User} = require('../db/schema')
 const router = express.Router()
 
-/* GET users listing. */
+const Schema = require('../db/schema')
+const User = Schema.User
+
+
+/* index */
 router.get('/', (req, res,) => {
+  // finds all the users in database (R)
   User.find()
   .then(users => {
     res.json(users) 
@@ -13,6 +17,7 @@ router.get('/', (req, res,) => {
 })
 
 router.post('/', (req, res) => {
+  // gets new user (C)
   const newUser = new User(req.body.user)
   newUser.save()
   .then((user) => {
@@ -22,7 +27,7 @@ router.post('/', (req, res) => {
     console.error(err)
   })
 })
-/*UPDATE users listing */
+/*UPDATE users listing (U) */
 
 router.put('/:userId', (req, res)=> {
   User.findByIdAndUpdate (req.params.id, req.body.user, {new:true})
@@ -34,9 +39,9 @@ router.put('/:userId', (req, res)=> {
       })
   })
 
-/* DELETE users listing */
+/* DELETE users listing (D)*/
 
-router.delete('/:userId', (req, res) =>{
+router.delete('/:userId/delete', (req, res) =>{
   User.findByIdAndRemove(req.params.userId)
    .then((user) => {
      res.sendStatus(200)

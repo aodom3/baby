@@ -1,74 +1,97 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-class LogInPage extends Component {
+class LogIn extends Component {
   state = {
-    userName: '',
-    password: ''
+    users: [],
+    user: {
+      userName: '',
+      password: ''
+    }
+  }
+
+  componentDidMount() {
+    this.getAllUsers()
   }
 
   getAllUsers = () => {
-    axios.get('localhost:3001/api/users').then(res => {
-      this.setState({users: res.data})
+    axios.get('/api/users')
+      .then(res => {
+        console.log("Saving users to state", res.data)
+        this.setState({ users: res.data })
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+
+  createUser = () => {
+    axios.post('/api/users', { user: this.state.user })
+    .then((res) => {
+      const users = [...this.state.users]
+      users.push(res.data)
+      this.setState({users})
     })
   }
 
-
-
-
-
+  handleSignUp = (e) => {
+    e.preventDefault()
+    axios.post('/api/users', { user: this.state.user })
+    .then((res) => {
+      const users = [...this.state.users]
+      users.push(res.data)
+      this.setState({users})
+    })
+  }
 
   handleChange = (event) => {
-    const inputName = event.target.name
-    const userInput = event.target.value
-
-    const newState = { ...this.state }
-    newState[ inputName ] = userInput
-    this.setState(newState)
-
+    const user = { ...this.state.user }
+    user[event.target.name] = event.target.value
+    this.setState({ user })
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault()
-    axios.post('/api/users', this.state).then((res) => {
-      console.log(res.data)
-      this.props.history.push(`/users/${res.data._id}`)
+  render() {
+    const userLinks = this.state.users.map((user, i) => {
+      return (
+        <div key={i}>
+          <Link to={`/user/${user._id}`}>{user.userName}</Link>
+        </div>)
     })
-  }
 
-  render () {
     return (
-      <div>
-        <h1>Select User</h1>
-        {/* {this.props.users.map((user) => {
-          return (
-            <Link key={user._id} to={`/user/${user._id}`}>{user.userName}</Link>
-          )
-        })} */}
-
-        <h3>Create a User</h3>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="User Name"
-            type="text"
-            name="userName"
-            value={this.state.userName}
-            onChange={this.handleChange}
-          />
-          <input
-            placeholder="Password"
-            type="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-
-          <button type="submit">Submit</button>
+      <div class="form">
+        <div>
+          
+        </div>
+        <div class="Link-style">
+        <Link to='/'>Return Home</Link>
+        <h3>Log-In</h3>
+        <h6>Please Select an Existing User</h6>
+        <div class="update">
+        
+       {userLinks} 
+       
+       </div>
+        </div>
+        <h3>Sign-Up</h3>
+        <form onSubmit={this.handleSignUp}>
+          <div>
+            <label htmlFor="userName">User Name</label>
+            <input onChange={this.handleChange} name="userName" type="text"/>
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <input onChange={this.handleChange} name="password" type="text" />
+          </div>
+          <div class="center">
+         <button class="waves-effect waves-light btn center-align btn-small center">Send</button>
+          </div>
         </form>
       </div>
+    
     )
   }
 }
 
-export default LogInPage
+export default LogIn

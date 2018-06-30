@@ -39,9 +39,7 @@ router.get('/', (req, res) => {
         .catch(console.error)
     })
     .catch(console.error)
-});
-
-
+})
  
 /*UPDATE PIC*/
 router.put('/:id', function (req, res){

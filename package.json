@@ -11,6 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "cd client && npm install && npm run build"
   },
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "body-parser": "^1.18.3",
     "concurrently": "^3.6.0",

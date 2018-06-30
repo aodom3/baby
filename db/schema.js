@@ -3,13 +3,13 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const PicSchema = new Schema({
-    title: {
-        type: String,
-        required:true,
-    },
     month: {
         type: String,
         required: true,
+    },
+    title: {
+        type: String,
+        required:true,
     },
     description:{
         type: String,
@@ -18,7 +18,7 @@ const PicSchema = new Schema({
 })
 
 const UserSchema = new Schema({
-    userName: {
+    email: {
         type: String,
         required: true,
     },
@@ -29,7 +29,7 @@ const UserSchema = new Schema({
     
     pics: [PicSchema]
 })
-
+// models for each schema
 const User = mongoose.model('User', UserSchema)
 const Pic = mongoose.model('Pic', PicSchema)
 
