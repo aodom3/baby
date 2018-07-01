@@ -1,29 +1,27 @@
 const express = require('express')
-const {UserModel, PicModel} = require('../db/schema')
 const router = express.Router({mergeParams: true})
-// const mongoose = require('mongoose')
+const {UserModel, PicModel} = require('../db/schema')
 
-router.get('/', (req, res) => {
+
+  router.post('/', function (req, res) {
+    UserModel.findById(req.params.userId)
+      .then((user) => {
+          user.pics.push(newPic)
+          return user.save()
+        }).then((savedUser => {
+            res.send({
+                user: savedUser
+            })
+          })
+      })
+     
+  router.get('/', (req, res) => {
     Users.find()
       .then(users => {
         res.json(users)
         console.log(users)
       })
       .catch((err) => console.log(err))
-  })
-
-  router.post('/', (req, res) => {
-    User.findById(req.params.userId)
-      .then((user) => {
-          user.pics.push(new Pic())
-          user.save()
-          .then((data) => {
-            res.json(data)
-          })
-      })
-      .catch((err) => {
-        console.error(err)
-      })
   })
  
   router.delete('/', (req, res) => {
