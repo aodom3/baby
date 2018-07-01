@@ -11,7 +11,7 @@ class HomePage extends Component {
               <p className="lead">Check the progression of your baby over his or her first year!</p>
               <hr className="my-2" />
               <p className="lead">
-              <Link to='/user'><Button color="info" size="lg" block>Login</Button>{' '}
+              <Link to='/login'><Button color="info" size="lg" block>Login</Button>{' '}
             </Link>
               </p>
             </Jumbotron>

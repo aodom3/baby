@@ -1,5 +1,5 @@
 const express = require('express')
-const {User, Pic} = require('../db/schema')
+const {UserModel, PicModel} = require('../db/schema')
 const router = express.Router({mergeParams: true})
 // const mongoose = require('mongoose')
 

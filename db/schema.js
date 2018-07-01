@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
 
+// create Schema
+
 const PicSchema = new Schema({
     month: {
         type: String,
