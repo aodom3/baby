@@ -9,6 +9,7 @@ https://imgur.com/a/zJZFypJ
 
 ## Wireframe
 
+https://imgur.com/a/CcxXPpE
 
 ## Link to Trello Board
 
@@ -25,7 +26,7 @@ https://trello.com/b/EFxevmkY/wdi-project-3
 8. Heroku
 9. Luicidchart
 10. Postman
-11. SketchApp
+11. Wireframe CC
   
 ## Aproach Taken
 
