@@ -7,22 +7,22 @@ import {Link} from 'react-router-dom'
 class LogInPage extends React.Component {
   constructor(){
     super()
+  
+  this.state = {
+    user:[]
+
   }
-  state = {
-    user: {
-      email:'',
-      password:'',
-    }
   }
 
-  // componentDidMount() {
-  //   this.getAllUsers()
-  // }
+  componentDidMount() {
+    this.getAllUsers()
+  }
 
   getAllUsers = () => {
     axios.get('/api/users').then(res => {
       this.setState({users: res.data})
     })
+  
   }
 
   handleChange = (event) => {
@@ -43,11 +43,12 @@ class LogInPage extends React.Component {
     })
   }
 
+
   render () {
-    const userLinks = this.state.users.map((user, i) => {
+    const userLinks = this.state.user.map((user, i) => {
       return (
         <div key={i}>
-          <Link to={`api/user/${user._id}`}>{user.userName}</Link>
+          <Link to={`/user/${user._id}`}>{user.userName}</Link>
         </div>)
     })
     return (
@@ -68,7 +69,8 @@ class LogInPage extends React.Component {
           <Input type="password" name="password" id="examplePassword" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
         </FormGroup>
         {' '}
-        <Button color="info">Submit</Button>
+        <Link to='/login/:userId'><Button color="info" size="lg" block>Submit</Button>{' '}
+            </Link>
       </Form>  
       </div>
     )

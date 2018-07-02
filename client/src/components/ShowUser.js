@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect, Link } from 'react-router-dom'
-import UpdateUser from './UpdateUser'
+// import UpdateUser from './UpdateUser'
+import { Button } from 'reactstrap';
 
 class ShowUser extends Component {
     state = {
@@ -66,14 +67,18 @@ class ShowUser extends Component {
                 </div>
              
          
-            <UpdateUser
+            {/* <UpdateUser
               user={this.state.user}
               updateUser={this.updateUser}
-            />
+            /> */}
            
               <div class="center">
                 <button onClick={this.handleDeleteUser}>Delete User</button>
               </div>
+                <div>
+                <Link to='/login/:userId'><Button color="info" size="lg" block>Submit</Button>{' '}
+            </Link>
+            </div>
        
               </div>
         )
