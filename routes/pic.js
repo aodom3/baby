@@ -14,9 +14,6 @@ const {UserModel, PicModel} = require('../db/schema')
         })
       })
     })
-      
-     
-  
  
   router.delete('/:id', (req, res) => {
     UserModel.findById(req.params.userId)

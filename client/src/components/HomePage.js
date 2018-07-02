@@ -21,7 +21,7 @@ class HomePage extends Component {
     return (
       <div className="opening">
         <div>
-          <Button color="info" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+          <Button color="warning" onClick={this.toggle}>{this.props.buttonLabel}</Button>
           <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
             <ModalHeader toggle={this.toggle}>Babies!</ModalHeader>
             <ModalBody>

@@ -1,16 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect, Link } from 'react-router-dom'
-// import UpdateUser from './UpdateUser'
 import { Button } from 'reactstrap';
 
 class ShowUser extends Component {
     state = {
-        users: [],
-        user: {
-          userName: '',
-          password: '',
-        },
+        user: [],
         userRemoved: false,
       };
     
@@ -56,31 +51,20 @@ class ShowUser extends Component {
             <div>
               <h3>Account Information</h3>
               <h6>{this.state.user.userName}</h6>
-              
-              <div class="center">
-                  
-                    <Link to={`/user/${this.props.match.params.userId}/pic`}>
-                        Pics
-                    </Link>
-                  </div>
-                  
-                </div>
-             
-         
-            {/* <UpdateUser
-              user={this.state.user}
-              updateUser={this.updateUser}
-            /> */}
+          
+            
            
               <div class="center">
-                <button onClick={this.handleDeleteUser}>Delete User</button>
+                <Button color="warning" onClick={this.handleDeleteUser}>Delete User</Button>{' '}
               </div>
                 <div>
-                <Link to='/login/:userId'><Button color="info" size="lg" block>Submit</Button>{' '}
-            </Link>
-            </div>
-       
+                <Link to={`/user/${this.props.match.params.userId}/pic`}><Button color="info" size="lg" block>Submit</Button>{' '}
+                </Link>
               </div>
+            </div>
+          </div>
+       
+            
         )
       }
     }

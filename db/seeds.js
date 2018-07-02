@@ -45,10 +45,4 @@ User.forEach((user) =>{
     })
 
 })
-// User.remove({})
-//     .then(() => Ashley.save())
-//     .then(() => console.log('Saved!'))
-//     .then(() => mongoose.connection.close())
-//     .catch(console.error)
-
 
