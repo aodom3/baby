@@ -7,19 +7,20 @@ import {Link} from 'react-router-dom'
 class LogInPage extends React.Component {
   constructor(){
     super()
-  this.state = {
-    email: '',
-    password:'',
-    pics:'',
   }
-  this.onChange = this.onChange.bind(this)
-  this.onSubmit = this.onSubmit.bind(this)
+  state = {
+    user: {
+      email:'',
+      password:'',
+    }
+  }
+
   // componentDidMount() {
   //   this.getAllUsers()
   // }
 
   getAllUsers = () => {
-    axios.get('localhost:3001/api/users').then(res => {
+    axios.get('/api/users').then(res => {
       this.setState({users: res.data})
     })
   }
@@ -43,51 +44,32 @@ class LogInPage extends React.Component {
   }
 
   render () {
-    const userLinks = this.state.users.map((user, i) =>{
+    const userLinks = this.state.users.map((user, i) => {
       return (
         <div key={i}>
-          <Link to={`/user/${user._id}`}>{user.userName}</Link>
+          <Link to={`api/user/${user._id}`}>{user.userName}</Link>
         </div>)
     })
     return (
       <div>
         <h1>Sign In</h1>
         <h4>Existing Users..</h4>
-        <p>{userLinks}</p>
-
+        {userLinks} 
         <h1>Sign Up</h1>
         <h4>New Users..</h4>
         <Form inline>
         <FormGroup>
           <Label for="exampleEmail" hidden>Email</Label>
-          <Input type="email" name="email" id="exampleEmail" placeholder="Email" />
+          <Input type="email" name="email" id="exampleEmail" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
         </FormGroup>
         {' '}
         <FormGroup>
           <Label for="examplePassword" hidden>Password</Label>
-          <Input type="password" name="password" id="examplePassword" placeholder="Password" />
+          <Input type="password" name="password" id="examplePassword" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
         </FormGroup>
         {' '}
         <Button color="info">Submit</Button>
-      </Form>
-        {/* <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="Username"
-            type="text"
-            name="userName"
-            value={this.state.userName}
-            onChange={this.handleChange}
-          />
-          <input
-            placeholder="Password"
-            type="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-
-          <button type="submit">Go</button>
-        </form> */}
+      </Form>  
       </div>
     )
   }

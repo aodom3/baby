@@ -1,9 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const {UserModel} = require('../db/schema')
-// const Schema = require('../db/schema')
-// const User = Schema.User
-
 
 /* index */
 router.get('/', function (req, res){
@@ -34,23 +31,23 @@ router.post('/', (req, res) => {
 
 /*UPDATE users listing (U) */
 
-// router.put('/:userId', (req, res)=> {
-//   User.findByIdAndUpdate (req.params.id, req.body.user, {new:true})
-//     .then((user) => {
-//       res.json(user)
-//     })
-//       .catch((error) => {
-//         console.log(error)
-//       })
-//   })
+router.patch('/:userId', (req, res)=> {
+  User.findByIdAndUpdate (req.params.id, req.body.user, {new:true})
+    .then((user) => {
+      res.json(user)
+    })
+      .catch((error) => {
+        console.log(error)
+      })
+  })
 
 /* DELETE users listing (D)*/
 
-// router.delete('/:userId/delete', (req, res) =>{
-//   User.findByIdAndRemove(req.params.userId)
-//    .then((user) => {
-//      res.sendStatus(200)
-//    })
-//     .catch(console.error)
-//   })
+router.delete('/:userId/delete', (req, res) =>{
+  User.findByIdAndRemove(req.params.userId)
+   .then((user) => {
+     res.sendStatus(200)
+   })
+    .catch(console.error)
+  })
 module.exports = router

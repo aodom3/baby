@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import HomePage from './components/HomePage'
 import LogInPage from './components/LogInPage'
 import PicPage from './components/PicPage'
-import NewPicPage from './components/NewPicPage'
 import ShowUser from './components/ShowUser'
 
 class App extends Component {
@@ -20,7 +19,6 @@ class App extends Component {
             <Route exact path="/login/:userId" component={ShowUser} />
             {/* PICS */}
             <Route exact path="/user/:userId/pic" component={PicPage} />
-            <Route exact path="/user/:userId/pic/:picId" component={NewPicPage} />
           </Switch>
       </Router>
     )

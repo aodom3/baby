@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
 class UpdateUser extends Component {
-    state ={
-        UpdateUser:{}, (
-            <div>
+    // state ={
+    //     UpdateUser:{}, (
+    //         <div>
                 
-            </div>
-        );
-    }
+    //         </div>
+    //     );
+    // }
 }
 
 export default UpdateUser;

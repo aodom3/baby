@@ -1,5 +1,5 @@
 {
-  "name": "babyapp",
+  "name": "mnaga",
   "version": "0.0.0",
   "private": true,
   "engines": {
@@ -13,7 +13,7 @@
   },
   
   "dependencies": {
-    // "body-parser": "^1.18.3",
+    "body-parser": "^1.18.3",
     "concurrently": "^3.6.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
